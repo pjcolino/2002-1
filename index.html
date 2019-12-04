@@ -7,15 +7,24 @@
 <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 <title>CodePen - 2002-1</title>
 <style>
-  #mainTitle{
+  #container {
+  
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/North_Carolina_in_United_States.svg/300px-North_Carolina_in_United_States.svg.png);
+  background-repeat: no-repeat;
+  font-size: 150%
+}
+
+#mainTitle{
   font-size:150%;
   color:gray;
 }
 #firstList{
+  background-size: 100px 40px;
+  background-repeat: repeat;
   background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Wake_Forest_University_Athletic_logo.svg/1200px-Wake_Forest_University_Athletic_logo.svg.png");
 }
 .myLists{
-  color:hotpink;
+  color: lightgray;
 }
 
 .odd{
@@ -28,6 +37,7 @@
 </style>
 </head>
 <body translate="no">
+<div id="container">
 <h2 id="mainTitle">To do list</h2>
 <ul class="myLists" id="firstList">
 <li class="odd">Do economics homework</li>
@@ -35,6 +45,7 @@
 </ul>
 <button id="addItem">Add</button>
 <input id="theItem">
+</div>
 <script id="rendered-js">
       console.clear();
 console.log("hello world");
@@ -49,6 +60,22 @@ function doClick(e) {
   var textnode = document.createTextNode(theValue);
   node.appendChild(textnode);
   document.getElementById("firstList").appendChild(node);
+}
+
+function addItem(){
+	var ul = document.getElementById("dynamic-list");
+  var candidate = document.getElementById("candidate");
+  var li = document.createElement("li");
+  li.setAttribute('id',candidate.value);
+  li.appendChild(document.createTextNode(candidate.value));
+  ul.appendChild(li);
+}
+
+function removeItem(){
+	var ul = document.getElementById("dynamic-list");
+  var candidate = document.getElementById("candidate");
+  var item = document.getElementById(candidate.value);
+  ul.removeChild(item);
 }
     </script>
 </body>
